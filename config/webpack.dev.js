@@ -1,15 +1,15 @@
-const paths = require('./paths');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const paths = require('./paths');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   mode: 'development',
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-eval-source-map',
   output: {
     path: paths.build,
-    filename: 'js/' + '[name].bundle.js',
-    chunkFilename: 'js/' + '[name].chunk.js',
+    filename: 'js/[name].bundle.js',
+    chunkFilename: 'js/[name].chunk.js',
   },
   devServer: {
     historyApiFallback: true,
@@ -23,22 +23,13 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
-        ],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-  ],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 });

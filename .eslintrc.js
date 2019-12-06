@@ -30,6 +30,7 @@ module.exports = {
     'react/require-default-props': 'off',
     'react/forbid-prop-types': 'warn',
     'react/jsx-filename-extension': 'off',
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'prettier/prettier': ['error'],
   },
 };
